@@ -1,25 +1,41 @@
 import clsx from 'clsx';
 import styles from './Button.module.css';
 
-const Button = (props) => {
+const Button = ({
+    size = "medium",
+    type = "primary",
+    variant ="fill",
+    className,
+    children,
+    onClickHandler,
+    ...props
+}) => {
     return (
-        <button 
-            onClick={props.onClick}
+        <button
+            type="submit"
             className={clsx(
                 styles.root,
                 // ---- size
-                props.size === 'small' && styles.sizeSmall,
-                props.size === 'medium' && styles.sizeMedium,
-                props.size === 'large' && styles.sizeLarge,
+                size === 'small' && styles.sizeSmall,
+                size === 'medium' && styles.sizeMedium,
+                size === 'large' && styles.sizeLarge,
                 // --- type
-                props.type === 'primary' && styles.typePrimary,
-                props.type === 'error' && styles.typeError,
-                props.type === 'gray' && styles.typeGray,
+                type === 'primary' && styles.typePrimary,
+                type === 'error' && styles.typeError,
+                type === 'gray' && styles.typeGray,
                 // --- variant
-                props.variant === 'fill' && styles.variantFill,
-                props.variant === 'outline' && styles.variantOutline,
-            )}>
-                {props.children}
+                variant === 'fill' && styles.variantFill,
+                variant === 'outline' && styles.variantOutline,
+
+                className
+            )}
+            onClick={(e) => {
+                // optional
+                onClickHandler?.(e.target);
+            }}
+            {...props}
+            >
+                {children}
         </button>
     );
 };

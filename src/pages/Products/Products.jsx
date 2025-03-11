@@ -53,14 +53,14 @@ const Products = () => {
                 value={name}
                 placeholder='نام'
                 type="text"
-                onChange={(e) => setName(e.target.value)}
+                onChange={value => setName(value)}
             />
             <Input
                 value={price}
                 style={{border: '1px solid red', padding: '10px', borderRadius: '5px'}}
                 placeholder='قیمت'
                 type="number"
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={value => setPrice(value)}
             />
             <select onChange={e => {
                 setcategory(e.target.value)

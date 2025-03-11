@@ -8,23 +8,30 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.root:disabled {
+    cursor: not-allowed;
+    /* opacity: 0.6; */
+    /* pointer-events: none; */
 }
 
 .sizeSmall {
     padding: auto 8px;
-    width: 98px;
+    height: 39px;
     font-size: var(--font-size-small);
 }
 
 .sizeMedium {
     padding: auto 12px;
-    width: 116px;
+    height: 49px;
     font-size: 14px;
 }
 
 .sizeLarge {
     padding: auto 16px;
-    width: 140px;
+    height: 59px;
     font-size: var(--font-size-big);
 }
 
@@ -33,16 +40,33 @@
     background-color: var(--color-primary-60);
 }
 
+
+.typePrimary:hover {
+    background-color: var(--color-primary-70);
+}
+
+.typePrimary:disabled {
+    background-color: var(--color-primary-20);
+}
+
+
 .typeError {
     color: white;
     background-color: var(--color-error-50);
-    border: 1px solid var(--color-error-50);
+}
+
+.typeError:hover:not(:disabled) {
+    background-color: var(--color-error-60);
+    border-color: var(--color-error-60);
 }
 
 .typeGray {
     color: white;
     background-color: var(--color-gray-20);
-    border: 1px solid var(--color-gray-20);
+}
+
+.typeGray:hover:not(:disabled) {
+    background-color: var(--color-gray-30);
 }
 
 .variantFill {
@@ -57,12 +81,92 @@
     color: var(--color-primary-60);
 }
 
+.variantOutline.typePrimary:hover:not(:disabled) {
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+    border-color: var(--color-primary-70);
+    color: var(--color-primary-70);
+}
+
 .variantOutline.typeError {
     border: 1px solid var(--color-error-50);
     color: var(--color-error-50);
+}
+
+.variantOutline.typeError:hover:not(:disabled) {
+    background-color: rgba(var(--color-error-rgb), 0.05);
+    border-color: var(--color-error-60);
+    color: var(--color-error-60);
 }
 
 .variantOutline.typeGray {
     border: 1px solid var(--color-gray-20);
     color: var(--color-gray-20);
 }
+
+.variantOutline.typeGray:hover:not(:disabled) {
+    background-color: rgba(var(--color-gray-rgb), 0.05);
+    border-color: var(--color-gray-30);
+    color: var(--color-gray-30);
+}
+
+
+/*
+IN SCSS
+
+css preprocessor
+
+.root {
+  all: unset;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-medium);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.sizeSmall {
+  padding: auto 8px;
+  width: 98px;
+  font-size: var(--font-size-small);
+}
+
+// Similar pattern for other size classes
+
+.typePrimary {
+  color: white;
+  background-color: var(--color-primary-60);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-70);
+  }
+}
+
+// Similar pattern for other type classes
+
+.variantOutline {
+  background-color: transparent;
+  
+  &.typePrimary {
+    border: 1px solid var(--color-primary-60);
+    color: var(--color-primary-60);
+    
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--color-primary-rgb), 0.05);
+      border-color: var(--color-primary-70);
+      color: var(--color-primary-70);
+    }
+  }
+  
+  // Similar pattern for other variant combinations
+}
+*/
