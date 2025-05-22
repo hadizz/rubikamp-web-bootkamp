@@ -4,6 +4,7 @@ import FunctionalComponent from "./FunctionalComponent";
 const App = () =>  {
     return (
         <div>
+            <h1>Hello Rubikamp</h1>
             <FunctionalComponent />
             <br />
             <ClassComponent />
